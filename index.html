@@ -1,0 +1,699 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Юртал — каркасные дома, бани и беседки под ключ в Краснодаре</title>
+  <meta name="description" content="Каркасные дома, бани и беседки под ключ в Краснодаре и крае. Своё производство, фиксированная смета, учёт кубанского климата. Гарантия на работы и материалы." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Unbounded:wght@500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --graphite: #3d4148;
+      --graphite-deep: #2b2e33;
+      --graphite-soft: #5a5e66;
+      --green: #0f4336;
+      --green-mid: #165c49;
+      --green-bright: #1e7a60;
+      --wood: #c4a06a;
+      --wood-deep: #9a7544;
+      --cream: #f4efe6;
+      --paper: #fbf8f3;
+      --ink: #1c1e22;
+      --muted: #6b6f76;
+      --line: rgba(61,65,72,.14);
+      --white: #ffffff;
+      --shadow: 0 18px 50px rgba(28,30,34,.12);
+      --radius: 18px;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: Manrope, system-ui, sans-serif;
+      color: var(--ink);
+      background: var(--paper);
+      line-height: 1.55;
+    }
+    img { max-width: 100%; display: block; }
+    a { color: inherit; text-decoration: none; }
+    button, input, select, textarea { font: inherit; }
+    .wrap { width: min(1180px, calc(100% - 40px)); margin: 0 auto; }
+    .eyebrow {
+      display: inline-flex; align-items: center; gap: 8px;
+      letter-spacing: .14em; text-transform: uppercase;
+      font-size: 12px; font-weight: 700; color: var(--green-mid);
+    }
+    .eyebrow::before {
+      content: ""; width: 22px; height: 1px; background: var(--wood-deep);
+    }
+    h1, h2, h3, .brand-word { font-family: Unbounded, Manrope, sans-serif; letter-spacing: -.03em; }
+    h1 { font-size: clamp(32px, 5vw, 64px); line-height: 1.08; font-weight: 600; }
+    h2 { font-size: clamp(28px, 3.4vw, 44px); line-height: 1.15; font-weight: 600; }
+    h3 { font-size: 22px; line-height: 1.25; font-weight: 600; }
+    .lead { font-size: 18px; color: var(--muted); max-width: 640px; }
+
+    /* Header */
+    .header {
+      position: sticky; top: 0; z-index: 50;
+      backdrop-filter: blur(16px);
+      background: rgba(251,248,243,.86);
+      border-bottom: 1px solid var(--line);
+    }
+    .header-inner {
+      display: flex; align-items: center; justify-content: space-between;
+      min-height: 78px; gap: 20px;
+    }
+    .logo {
+      display: flex; align-items: center; gap: 10px; flex-shrink: 0;
+    }
+    .logo img { height: 52px; width: auto; }
+    nav { display: flex; gap: 22px; font-size: 14px; font-weight: 600; color: var(--graphite); }
+    nav a:hover { color: var(--green); }
+    .header-cta { display: flex; align-items: center; gap: 16px; }
+    .phone {
+      font-weight: 800; color: var(--graphite-deep); white-space: nowrap;
+    }
+    .messengers { display: flex; gap: 8px; }
+    .ico {
+      width: 36px; height: 36px; border-radius: 50%;
+      display: grid; place-items: center;
+      background: var(--cream); color: var(--green);
+      border: 1px solid var(--line);
+    }
+    .ico:hover { background: var(--green); color: #fff; }
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+      border: 0; cursor: pointer; border-radius: 999px;
+      padding: 14px 22px; font-weight: 700; transition: .2s ease;
+      white-space: nowrap;
+    }
+    .btn-green { background: var(--green); color: #fff; }
+    .btn-green:hover { background: var(--green-mid); transform: translateY(-1px); }
+    .btn-wood { background: var(--wood); color: var(--graphite-deep); }
+    .btn-wood:hover { background: #d4b27a; }
+    .btn-ghost {
+      background: transparent; color: #fff;
+      border: 1px solid rgba(255,255,255,.35);
+    }
+    .btn-ghost:hover { background: rgba(255,255,255,.1); }
+    .burger {
+      display: none; width: 42px; height: 42px; border: 1px solid var(--line);
+      border-radius: 10px; background: #fff; cursor: pointer;
+    }
+
+    /* Hero */
+    .hero {
+      position: relative; min-height: calc(100vh - 78px);
+      display: grid; align-items: end;
+      background: #1c1e22 center/cover no-repeat;
+      color: #fff;
+    }
+    .hero::after {
+      content: ""; position: absolute; inset: 0;
+      background:
+        linear-gradient(180deg, rgba(20,22,24,.28) 0%, rgba(20,22,24,.55) 48%, rgba(15,20,18,.82) 100%),
+        linear-gradient(90deg, rgba(15,18,16,.55), transparent 55%);
+    }
+    .hero-inner { position: relative; z-index: 1; padding: 80px 0 72px; }
+    .hero .eyebrow { color: var(--wood); }
+    .hero h1 { max-width: 18ch; margin: 14px 0 18px; }
+    .hero p { max-width: 46ch; font-size: 19px; color: rgba(255,255,255,.86); }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; margin: 28px 0 36px; }
+    .hero-meta {
+      display: grid; grid-template-columns: repeat(3, max-content);
+      gap: 28px; padding-top: 22px; border-top: 1px solid rgba(255,255,255,.16);
+    }
+    .hero-meta b { display: block; font-size: 26px; font-family: Unbounded, sans-serif; }
+    .hero-meta span { font-size: 13px; color: rgba(255,255,255,.7); }
+
+    /* Sections */
+    section { padding: 92px 0; }
+    .sec-head { margin-bottom: 40px; }
+    .sec-head p { margin-top: 12px; }
+
+    .cards-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
+    .card {
+      background: #fff; border-radius: var(--radius); overflow: hidden;
+      border: 1px solid var(--line); box-shadow: var(--shadow);
+    }
+    .card img { height: 220px; width: 100%; object-fit: cover; }
+    .card-body { padding: 24px; }
+    .card-body h3 { margin: 8px 0 10px; }
+    .tag {
+      font-size: 12px; font-weight: 700; letter-spacing: .08em;
+      text-transform: uppercase; color: var(--green-mid);
+    }
+    .card-body ul { margin-top: 14px; padding-left: 18px; color: var(--muted); }
+    .card-body li + li { margin-top: 6px; }
+
+    .why {
+      background:
+        linear-gradient(180deg, rgba(251,248,243,.92), rgba(251,248,243,.92)),
+        url("img/wood.jpeg") center/cover;
+    }
+    .why-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+    .why-item {
+      background: rgba(255,255,255,.92);
+      border: 1px solid var(--line);
+      border-radius: 16px; padding: 24px 22px;
+    }
+    .num {
+      font-family: Unbounded, sans-serif; color: var(--wood-deep);
+      font-size: 22px; margin-bottom: 10px;
+    }
+
+    .portfolio-grid { display: grid; grid-template-columns: 1.4fr 1fr; gap: 18px; }
+    .case { position: relative; border-radius: 18px; overflow: hidden; min-height: 340px; }
+    .case img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+    .case-info {
+      position: absolute; inset: auto 0 0 0;
+      padding: 22px; color: #fff;
+      background: linear-gradient(transparent, rgba(16,18,20,.88));
+    }
+    .case small { opacity: .8; }
+    .case p { margin-top: 6px; font-size: 14px; color: rgba(255,255,255,.86); }
+    .quote {
+      margin-top: 10px; font-style: italic; font-size: 14px; color: var(--wood);
+    }
+    .stack { display: grid; gap: 18px; }
+
+    .steps { display: grid; grid-template-columns: repeat(5, 1fr); gap: 14px; counter-reset: step; }
+    .step {
+      background: #fff; border: 1px solid var(--line); border-radius: 16px;
+      padding: 22px 18px; position: relative;
+    }
+    .step::before {
+      counter-increment: step; content: "0" counter(step);
+      font-family: Unbounded, sans-serif; color: var(--green);
+      font-size: 20px; display: block; margin-bottom: 12px;
+    }
+
+    .promo {
+      background: var(--graphite-deep); color: #fff; padding: 0;
+    }
+    .promo-inner {
+      display: grid; grid-template-columns: 1.2fr .8fr; gap: 40px; align-items: center;
+      padding: 72px 0;
+    }
+    .promo h2 { margin: 10px 0 14px; }
+    .promo p { color: rgba(255,255,255,.78); }
+    .promo-card {
+      background: linear-gradient(180deg, #165c49, #0f4336);
+      border-radius: 20px; padding: 28px;
+      box-shadow: 0 20px 40px rgba(0,0,0,.25);
+    }
+    .promo-card strong { font-size: 42px; font-family: Unbounded, sans-serif; display: block; }
+    .timer { display: flex; gap: 10px; margin: 16px 0 20px; }
+    .timer div {
+      background: rgba(255,255,255,.1); border-radius: 12px;
+      min-width: 70px; text-align: center; padding: 10px 8px;
+    }
+    .timer b { display: block; font-size: 24px; }
+    .timer span { font-size: 11px; opacity: .75; }
+
+    .faq { display: grid; gap: 10px; }
+    details {
+      background: #fff; border: 1px solid var(--line); border-radius: 14px; padding: 16px 20px;
+    }
+    summary { cursor: pointer; font-weight: 700; list-style: none; display: flex; justify-content: space-between; gap: 16px; }
+    summary::-webkit-details-marker { display: none; }
+    summary::after { content: "+"; color: var(--green); font-size: 22px; line-height: 1; }
+    details[open] summary::after { content: "–"; }
+    details p { margin-top: 10px; color: var(--muted); }
+
+    .contact-grid { display: grid; grid-template-columns: .9fr 1.1fr; gap: 28px; align-items: start; }
+    form {
+      background: #fff; border: 1px solid var(--line); border-radius: 20px;
+      padding: 28px; box-shadow: var(--shadow);
+    }
+    label { display: block; font-size: 13px; font-weight: 700; margin: 0 0 6px; }
+    .field { margin-bottom: 14px; }
+    input, select, textarea {
+      width: 100%; border: 1px solid var(--line); border-radius: 12px;
+      padding: 12px 14px; background: var(--paper);
+    }
+    textarea { min-height: 110px; resize: vertical; }
+    .form-note { font-size: 12px; color: var(--muted); margin-top: 10px; }
+    .ok { display: none; padding: 14px; border-radius: 12px; background: #e7f4ee; color: var(--green); font-weight: 700; margin-bottom: 12px; }
+
+    footer {
+      background: var(--graphite-deep); color: rgba(255,255,255,.8); padding: 48px 0 28px;
+    }
+    .foot { display: grid; grid-template-columns: 1.3fr 1fr 1fr; gap: 30px; margin-bottom: 28px; }
+    footer a:hover { color: #fff; }
+    .copy { border-top: 1px solid rgba(255,255,255,.12); padding-top: 16px; font-size: 13px; }
+
+    .modal {
+      position: fixed; inset: 0; background: rgba(16,18,20,.6);
+      display: none; place-items: center; z-index: 80; padding: 20px;
+    }
+    .modal.open { display: grid; }
+    .modal-card {
+      width: min(460px, 100%); background: #fff; border-radius: 20px; padding: 28px;
+    }
+
+    @media (max-width: 980px) {
+      nav, .header-cta .phone, .messengers { display: none; }
+      .burger { display: grid; place-items: center; }
+      .cards-3, .why-grid, .steps, .portfolio-grid, .promo-inner, .contact-grid, .foot {
+        grid-template-columns: 1fr;
+      }
+      .hero-meta { grid-template-columns: 1fr 1fr; }
+      .header.menu-open nav {
+        display: flex; flex-direction: column; position: absolute;
+        top: 78px; left: 0; right: 0; background: #fff; padding: 18px 20px 24px;
+        border-bottom: 1px solid var(--line);
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="header" id="header">
+    <div class="wrap header-inner">
+      <a class="logo" href="#top" aria-label="Юртал">
+        <img src="img/logo.png" alt="Логотип Юртал" />
+      </a>
+      <nav>
+        <a href="#build">Что строим</a>
+        <a href="#why">Почему мы</a>
+        <a href="#portfolio">Портфолио</a>
+        <a href="#process">Как работаем</a>
+        <a href="#faq">FAQ</a>
+        <a href="#contact">Контакты</a>
+      </nav>
+      <div class="header-cta">
+        <a class="phone" href="tel:+78612050000">+7 (861) 205-00-00</a>
+        <div class="messengers">
+          <a class="ico" href="https://t.me/" title="Telegram" aria-label="Telegram">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M21.5 3.3 18.3 20.4c-.24 1.07-.87 1.33-1.76.83l-4.86-3.58-2.35 2.26c-.26.26-.48.48-.98.48l.35-4.94L16.8 6.5c.37-.33-.08-.51-.57-.18L6.7 12.84l-4.79-1.5c-1.04-.32-1.06-1.04.22-1.54L20.2 2.8c.87-.33 1.63.2 1.3 1.5z"/></svg>
+          </a>
+          <a class="ico" href="https://wa.me/78612050000" title="WhatsApp" aria-label="WhatsApp">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M20 3.9A10 10 0 0 0 3.3 17.7L2 22l4.4-1.3A10 10 0 0 0 20 3.9zm-8 16.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-2.6.8.8-2.5-.2-.3A8.2 8.2 0 1 1 12 20.1zm4.5-6.1c-.25-.12-1.47-.72-1.7-.8-.22-.08-.38-.12-.54.12-.16.25-.62.8-.76.96-.14.16-.28.18-.53.06-1.47-.73-2.43-1.3-3.4-2.95-.26-.44.26-.41.73-1.36.08-.16.04-.3-.02-.42-.06-.12-.54-1.3-.74-1.78-.2-.48-.4-.41-.54-.42h-.46c-.16 0-.42.06-.64.3-.22.25-.84.82-.84 2s.86 2.32.98 2.48c.12.16 1.7 2.6 4.12 3.64.58.25 1.03.4 1.38.51.58.18 1.1.16 1.52.1.46-.07 1.47-.6 1.68-1.18.2-.58.2-1.08.14-1.18-.06-.1-.22-.16-.47-.28z"/></svg>
+          </a>
+        </div>
+        <button class="btn btn-green" data-open="consult">Получить консультацию</button>
+        <button class="burger" id="burger" aria-label="Меню">☰</button>
+      </div>
+    </div>
+  </header>
+
+  <section class="hero" id="top" style="background-image:url('img/hero.jpg')">
+    <div class="wrap hero-inner">
+      <div class="eyebrow">Краснодар и Краснодарский край</div>
+      <h1>Каркасные дома, бани и беседки под ключ</h1>
+      <p>Строим быстро, надёжно и с учётом климата Кубани: влажность, ливни, сложные грунты и высокие летние температуры.</p>
+      <div class="hero-actions">
+        <button class="btn btn-wood" data-open="calc">Рассчитать стоимость</button>
+        <a class="btn btn-ghost" href="#portfolio">Смотреть объекты</a>
+      </div>
+      <div class="hero-meta">
+        <div><b>своё</b><span>производство каркаса</span></div>
+        <div><b>смета</b><span>фиксируется в договоре</span></div>
+        <div><b>фотоотчёт</b><span>на каждом этапе работ</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="build">
+    <div class="wrap">
+      <div class="sec-head">
+        <div class="eyebrow">Специализация</div>
+        <h2>Что строим</h2>
+        <p class="lead">Три направления — одна инженерия. Не «коробка с картинки», а объект, который живёт в кубанском климате.</p>
+      </div>
+      <div class="cards-3">
+        <article class="card">
+          <img src="img/house.jpg" alt="Каркасный дом с террасой" />
+          <div class="card-body">
+            <div class="tag">Дома</div>
+            <h3>Каркасные дома</h3>
+            <p>Под ключ: от проекта до отделки. Пирог стены считаем под влажность и ливни, а не копируем северный шаблон.</p>
+            <ul>
+              <li>Ветро- и влагозащита с правильной пароизоляцией</li>
+              <li>Фундамент под глину, суглинки и высокий УГВ</li>
+              <li>Типовой проект или дом с нуля</li>
+            </ul>
+          </div>
+        </article>
+        <article class="card">
+          <img src="img/banya-frame.jpg" alt="Каркасная баня с парилкой" />
+          <div class="card-body">
+            <div class="tag">Бани</div>
+            <h3>Каркасные бани</h3>
+            <p>Баня за недели, а не месяцы. Парная, зона отдыха и душевая — в одном проекте, без сырости в каркасе.</p>
+            <ul>
+              <li>Грамотная вентиляция и дымоудаление</li>
+              <li>Огнезащита и разделка печи по нормам</li>
+              <li>Можно поставить рядом с домом комплектом</li>
+            </ul>
+          </div>
+        </article>
+        <article class="card">
+          <img src="img/besedka.jpg" alt="Деревянная беседка с перголой" />
+          <div class="card-body">
+            <div class="tag">Беседки</div>
+            <h3>Беседки и перголы</h3>
+            <p>От компактных до просторных. С зоной гриля, освещением и кровлей, которая держит кубанский ливень.</p>
+            <ul>
+              <li>Открытые, полузакрытые и тёплые варианты</li>
+              <li>Импрегнированная древесина и укрывные составы</li>
+              <li>Встраиваем в существующий участок</li>
+            </ul>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="why" id="why">
+    <div class="wrap">
+      <div class="sec-head">
+        <div class="eyebrow">Аргументы</div>
+        <h2>Почему Юртал, а не «бригада с Авито»</h2>
+        <p class="lead">Закрываем типовые страхи: раздутая смета, сырой каркас, исчезнувший прораб и фундамент, который «поплыл» после сезона дождей.</p>
+      </div>
+      <div class="why-grid">
+        <div class="why-item">
+          <div class="num">01</div>
+          <h3>Своё производство</h3>
+          <p>Режем и собираем каркас сами. Контроль сечения, влажности пиломатериала и геометрии — до выезда на участок.</p>
+        </div>
+        <div class="why-item">
+          <div class="num">02</div>
+          <h3>Типовые и индивидуальные проекты</h3>
+          <p>Можно взять готовое и сэкономить месяцы. Можно заказать с нуля под рельеф, стороны света и ваш сценарий жизни.</p>
+        </div>
+        <div class="why-item">
+          <div class="num">03</div>
+          <h3>Смета в договоре</h3>
+          <p>Цена фиксируется. Нет «ой, забыли мембрану» и внезапных доплат на финише. Изменения — только допсоглашением.</p>
+        </div>
+        <div class="why-item">
+          <div class="num">04</div>
+          <h3>Гарантия на работы и материалы</h3>
+          <p>Прописываем срок и зону ответственности. Если узел выполнен нами — чиним мы, а не отправляем «к поставщику плёнки».</p>
+        </div>
+        <div class="why-item">
+          <div class="num">05</div>
+          <h3>Климат и грунты края</h3>
+          <p>Знаем местные суглинки, верховодку, ветровые районы и то, как каркас ведёт себя в сырую зиму и в +38 летом.</p>
+        </div>
+        <div class="why-item">
+          <div class="num">06</div>
+          <h3>Прозрачность хода работ</h3>
+          <p>Фото- и видеоотчёт на каждом этапе. Вы видите фундамент, каркас, пирог и кровлю — не только готовый фасад в конце.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="portfolio">
+    <div class="wrap">
+      <div class="sec-head">
+        <div class="eyebrow">Кейсы</div>
+        <h2>Портфолио</h2>
+        <p class="lead">Ниже — демонстрационные кейсы для структуры лендинга. Реальные объекты Юртал нужно подставить вместо стоковых фото и вымышленных площадей.</p>
+      </div>
+      <div class="portfolio-grid">
+        <article class="case">
+          <img src="img/house-modern.jpg" alt="Каркасный дом 142 м²" />
+          <div class="case-info">
+            <small>Динской район · 142 м² · 5 месяцев</small>
+            <h3>Дом для семьи с участком без нормального подъезда</h3>
+            <p>Задача: вписаться в узкий заезд, не задирать смету на монолит и закрыть западный фасад от летнего перегрева.</p>
+            <div class="quote">«Нам не продавали квадраты. Сначала разобрали грунт и розу ветров, потом уже планировку.»</div>
+          </div>
+        </article>
+        <div class="stack">
+          <article class="case" style="min-height:260px">
+            <img src="img/banya.jpg" alt="Баня на склоне" />
+            <div class="case-info">
+              <small>Горячий Ключ · 28 м² · сложный рельеф</small>
+              <h3>Баня на участке со склоном</h3>
+              <p>Свайно-ростверковый фундамент, отдельный контур парной, чтобы каркас не тянул влагу из моечной.</p>
+            </div>
+          </article>
+          <article class="case" style="min-height:260px">
+            <img src="img/besedka.jpg" alt="Беседка с грилем" />
+            <div class="case-info">
+              <small>Краснодар, Прикубанский · 18 м²</small>
+              <h3>Беседка с гриль-зоной и перголой</h3>
+              <p>Нужна была тень днём и сухая зона в ливень. Сделали комбинированную кровлю и скрытую подсветку.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+      <div class="cards-3" style="margin-top:18px">
+        <article class="card">
+          <img src="img/house-grey.jpg" alt="Одноэтажный каркасный дом" />
+          <div class="card-body">
+            <div class="tag">Абинск · 96 м²</div>
+            <h3>Одноэтажник для родителей</h3>
+            <p>Широкие проёмы, без порогов, тёплая веранда. Пирог рассчитан и на сырую зиму, и на работу кондиционеров летом.</p>
+          </div>
+        </article>
+        <article class="card">
+          <img src="img/house2.jpg" alt="Современный каркасный дом вечером" />
+          <div class="card-body">
+            <div class="tag">Северский район · 168 м²</div>
+            <h3>Дом с панорамным фасадом</h3>
+            <p>Большие стёкла без перегрева: вынос кровли, правильная ориентация и внешнее затенение террасы.</p>
+          </div>
+        </article>
+        <article class="card">
+          <img src="img/banya2.jpg" alt="Баня с купелью" />
+          <div class="card-body">
+            <div class="tag">Темрюкский район · 24 м²</div>
+            <h3>Баня плюс купель у моря</h3>
+            <p>Солёный воздух и влажность. Закрыли древесину правильными составами и подняли отметку пола над верховодкой.</p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="process" style="background:#fff">
+    <div class="wrap">
+      <div class="sec-head">
+        <div class="eyebrow">Процесс</div>
+        <h2>Как мы работаем</h2>
+        <p class="lead">Пять шагов. Клиент всегда понимает, на каком этапе объект и за что уже заплачены деньги.</p>
+      </div>
+      <div class="steps">
+        <div class="step">
+          <h3>Консультация</h3>
+          <p>Созвон или выезд на участок. Смотрим рельеф, грунт, подъезд, соседей и ваши «хотелки» без самообмана по бюджету.</p>
+        </div>
+        <div class="step">
+          <h3>Проект и смета</h3>
+          <p>Планировка, конструктив, узлы под климат края. Смета с составом работ — до подписания, а не после котлована.</p>
+        </div>
+        <div class="step">
+          <h3>Договор</h3>
+          <p>Фиксируем цену, сроки, этапы оплаты, гарантию. Любое изменение проекта идёт отдельным соглашением.</p>
+        </div>
+        <div class="step">
+          <h3>Строительство</h3>
+          <p>Производство каркаса, монтаж, инженерка, отделка. На каждом этапе — фотоотчёт и понятный статус.</p>
+        </div>
+        <div class="step">
+          <h3>Сдача</h3>
+          <p>Приёмка с чек-листом, документы, гарантийные обязательства. Объект ваш — мы не пропадаем после банкета.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="promo" id="promo">
+    <div class="wrap promo-inner">
+      <div>
+        <div class="eyebrow" style="color:var(--wood)">Триггер до 31 октября 2026</div>
+        <h2>Дом и баня одним договором — скидка на монтаж</h2>
+        <p>Если заказываете жилой дом и баню комплектом, снижаем стоимость монтажных работ. Отдельно до 15 октября — бесплатный выезд инженера по Краснодару и ближайшим районам.</p>
+      </div>
+      <div class="promo-card">
+        <span>Скидка на монтаж комплекта</span>
+        <strong>−7%</strong>
+        <div class="timer" id="timer">
+          <div><b data-d>00</b><span>дней</span></div>
+          <div><b data-h>00</b><span>часов</span></div>
+          <div><b data-m>00</b><span>минут</span></div>
+        </div>
+        <button class="btn btn-wood" data-open="consult" style="width:100%">Зафиксировать условие</button>
+      </div>
+    </div>
+  </section>
+
+  <section id="faq">
+    <div class="wrap">
+      <div class="sec-head">
+        <div class="eyebrow">Вопросы</div>
+        <h2>FAQ</h2>
+      </div>
+      <div class="faq">
+        <details open>
+          <summary>Можно ли менять проект после подписания договора?</summary>
+          <p>Да. Планировку, узлы и комплектацию можно менять. Любое изменение, которое бьёт в срок или в деньги, оформляется допсоглашением. Не «на словах прорабу».</p>
+        </details>
+        <details>
+          <summary>Как вы контролируете качество?</summary>
+          <p>Входной контроль пиломатериала и метизов, сборка каркаса на производстве, приёмка скрытых работ на участке, фотофиксация пирога до обшивки. Клиент видит те же кадры, что и технадзор.</p>
+        </details>
+        <details>
+          <summary>Какие есть варианты оплаты?</summary>
+          <p>Этапная оплата: договор / фундамент / каркас и кровля / инженерия и отделка. Работаем с безналом. Ипотека и кредит — через банки-партнёры, если объект подходит под их требования.</p>
+        </details>
+        <details>
+          <summary>Каркас не сгниёт в нашей влажности?</summary>
+          <p>Сгниёт, если собрать «как на Ютубе» без вентзазора, с мокрой доской и без выноса кровли. Мы считаем пирог под Кубань: защита от косого дождя, сушка конструкции, составы по месту, а не универсальная плёнка «на все регионы».</p>
+        </details>
+        <details>
+          <summary>Что с фундаментом на глине и высоком УГВ?</summary>
+          <p>Чаще сваи или утеплённая плита — зависит от геологии, нагрузки и бюджета. Не обещаем «ленту всем» с картинки. Если участок сложный, сначала выезд и, при необходимости, геология.</p>
+        </details>
+        <details>
+          <summary>Сроки?</summary>
+          <p>Баня и беседка — недели. Дом под ключ — обычно от 3 до 6 месяцев в зависимости от площади, инженерии и отделки. Срок фиксируется в договоре с понятными исключениями: погода, согласования, изменения проекта заказчиком.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="wrap contact-grid">
+      <div>
+        <div class="eyebrow">Заявка</div>
+        <h2>Рассчитать стоимость или вызвать инженера</h2>
+        <p class="lead" style="margin:14px 0 22px">Не пишите «ориентировочно от». Напишите площадь, населённый пункт и что нужно — дом, баня, беседка или комплект. Ответим с развилкой по бюджету.</p>
+        <p><b>Телефон:</b> <a href="tel:+78612050000">+7 (861) 205-00-00</a></p>
+        <p><b>Почта:</b> hello@yurtal-demo.ru</p>
+        <p><b>География:</b> Краснодар, край, выезд по согласованию</p>
+        <p style="margin-top:12px;color:var(--muted);font-size:13px">Контакты в макете — заглушки. В боевую версию ставятся реальные номер, мессенджеры и юридические реквизиты.</p>
+      </div>
+      <form id="lead">
+        <div class="ok" id="ok">Заявка записана локально. Подключите почту или CRM, чтобы она уходила менеджеру.</div>
+        <div class="field">
+          <label for="name">Имя</label>
+          <input id="name" name="name" required placeholder="Как к вам обращаться" />
+        </div>
+        <div class="field">
+          <label for="phone">Телефон</label>
+          <input id="phone" name="phone" required type="tel" placeholder="+7 (" />
+        </div>
+        <div class="field">
+          <label for="type">Что нужно</label>
+          <select id="type" name="type">
+            <option>Каркасный дом</option>
+            <option>Баня</option>
+            <option>Беседка</option>
+            <option>Дом и баня комплектом</option>
+            <option>Пока не решил — нужна консультация</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="msg">Участок и пожелания</label>
+          <textarea id="msg" name="msg" placeholder="Район, сотка, уклон, ориентир по площади и бюджету"></textarea>
+        </div>
+        <button class="btn btn-green" type="submit" style="width:100%">Отправить заявку</button>
+        <p class="form-note">Нажимая кнопку, вы соглашаетесь на обработку персональных данных. Текст политики — на вашу юридическую страницу.</p>
+      </form>
+    </div>
+  </section>
+
+  <footer>
+    <div class="wrap">
+      <div class="foot">
+        <div>
+          <img src="img/logo.png" alt="Юртал" style="height:56px;background:#fff;border-radius:12px;padding:4px 8px" />
+          <p style="margin-top:14px">Каркасные дома, бани и беседки под ключ в Краснодаре и крае. Своё производство. Фиксированная смета.</p>
+        </div>
+        <div>
+          <h3 style="color:#fff;margin-bottom:10px">Разделы</h3>
+          <p><a href="#build">Что строим</a></p>
+          <p><a href="#portfolio">Портфолио</a></p>
+          <p><a href="#process">Как работаем</a></p>
+          <p><a href="#faq">FAQ</a></p>
+        </div>
+        <div>
+          <h3 style="color:#fff;margin-bottom:10px">Связь</h3>
+          <p><a href="tel:+78612050000">+7 (861) 205-00-00</a></p>
+          <p>Telegram / WhatsApp</p>
+          <p>Краснодар</p>
+          <button class="btn btn-wood" data-open="consult" style="margin-top:12px">Задать вопрос</button>
+        </div>
+      </div>
+      <div class="copy">© 2026 Юртал. Макет лендинга по брифу. Подставьте реальные реквизиты, объекты и договорную оферту.</div>
+    </div>
+  </footer>
+
+  <div class="modal" id="modal">
+    <div class="modal-card">
+      <h3 id="modal-title">Получить консультацию</h3>
+      <p style="color:var(--muted);margin:8px 0 16px" id="modal-lead">Оставьте телефон. Перезвоним и разберём участок, задачу и вилку бюджета.</p>
+      <form id="modal-form">
+        <div class="field">
+          <label>Имя</label>
+          <input name="name" required />
+        </div>
+        <div class="field">
+          <label>Телефон</label>
+          <input name="phone" required type="tel" />
+        </div>
+        <button class="btn btn-green" type="submit" style="width:100%">Жду звонка</button>
+      </form>
+      <button class="btn" id="modal-close" style="width:100%;margin-top:8px;background:transparent">Закрыть</button>
+    </div>
+  </div>
+
+  <script>
+    const header = document.getElementById('header');
+    document.getElementById('burger').onclick = () => header.classList.toggle('menu-open');
+    document.querySelectorAll('nav a').forEach(a => a.onclick = () => header.classList.remove('menu-open'));
+
+    const modal = document.getElementById('modal');
+    const title = document.getElementById('modal-title');
+    const lead = document.getElementById('modal-lead');
+    document.querySelectorAll('[data-open]').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const type = btn.getAttribute('data-open');
+        title.textContent = type === 'calc' ? 'Рассчитать стоимость' : 'Получить консультацию';
+        lead.textContent = type === 'calc'
+          ? 'Напишите, что строим и площадь. Пришлём развилку по комплектации, а не одну цифру «от».'
+          : 'Оставьте телефон. Перезвоним и разберём участок, задачу и вилку бюджета.';
+        modal.classList.add('open');
+      });
+    });
+    document.getElementById('modal-close').onclick = () => modal.classList.remove('open');
+    modal.addEventListener('click', e => { if (e.target === modal) modal.classList.remove('open'); });
+
+    function bindForm(form, okSel) {
+      form.addEventListener('submit', e => {
+        e.preventDefault();
+        if (okSel) document.getElementById(okSel).style.display = 'block';
+        form.reset();
+        if (form.id === 'modal-form') {
+          title.textContent = 'Заявка принята';
+          lead.textContent = 'Это демо-форма: данные остаются в браузере, пока не подключен бэкенд.';
+        }
+      });
+    }
+    bindForm(document.getElementById('lead'), 'ok');
+    bindForm(document.getElementById('modal-form'));
+
+    const end = new Date('2026-10-31T23:59:59+03:00').getTime();
+    const tick = () => {
+      const t = Math.max(0, end - Date.now());
+      const d = Math.floor(t / 86400000);
+      const h = Math.floor(t % 86400000 / 3600000);
+      const m = Math.floor(t % 3600000 / 60000);
+      const root = document.getElementById('timer');
+      root.querySelector('[data-d]').textContent = String(d).padStart(2,'0');
+      root.querySelector('[data-h]').textContent = String(h).padStart(2,'0');
+      root.querySelector('[data-m]').textContent = String(m).padStart(2,'0');
+    };
+    tick();
+    setInterval(tick, 30000);
+  </script>
+</body>
+</html>
